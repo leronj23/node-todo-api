@@ -8,11 +8,25 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', { useNewUrlParser: true
     console.log('Connected to MongoDB server');
     const db = client.db('TodoApp')
 
-    // How to count all the documents in a collection
-    db.collection('Users').find().count().then((count) => {
-        console.log('Todos count:', count)
-    }, (err) => {
-        console.log('Unable to fetch todos', err)
+    //deleteMany
+    // db.collection('Users').deleteMany({
+    //     name: 'L-train'
+    // }).then((result)=>{
+    //     console.log(result)
+    // })
+
+    //deleteOne
+    // db.collection('Users').deleteOne({
+    //     name: 'LeRon Jackson'
+    // }).then((result)=>{
+    //     console.log(result)
+    // })
+
+    //findOneAndDelete
+    db.collection('Users').findOneAndDelete({
+        name: 'LeRon Jackson'
+    }).then((result)=>{
+        console.log(result)
     })
 
     client.close();
