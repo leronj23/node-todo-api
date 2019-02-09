@@ -9,13 +9,11 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', { useNewUrlParser: true
     const db = client.db('TodoApp')
 
     //deleteMany
-    db.collection('Users').findOneAndUpdate(
-        { _id: new ObjectID('5c5e0cfe1125093b08afe458') },
-        { $set: { name: 'L-train' } },
-        { returnOriginal: false }
-    ).then((result) => {
+    db.collection('Users').deleteMany({ 
+        name: 'LeRon Jackson'
+    }).then((result) => {
         console.log(result)
-    })
+    });
 
     //deleteOne
     // db.collection('Users').deleteOne({
